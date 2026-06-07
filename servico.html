@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviço | Vós Agência</title>
+    <!-- Same CSS as index -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Specific Styles for Service Page */
+        body { background: var(--clr-bg); color: var(--clr-text-main); font-family: var(--ff-body); overflow-x: hidden; }
+        
+        .service-hero {
+            padding: 10rem 1rem 4rem;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(170,221,0,0.1) 0%, transparent 60%);
+        }
+        
+        .service-icon-large {
+            font-size: 4rem;
+            color: var(--clr-primary);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 30px rgba(170,221,0,0.5);
+        }
+        
+        .service-title {
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-family: var(--ff-heading);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        
+        .service-subtitle {
+            font-size: 1.2rem;
+            color: var(--clr-text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .service-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+        
+        .info-card {
+            background: rgba(15,15,15,0.7);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px;
+            padding: 3rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .benefit-list { list-style: none; padding: 0; margin-top: 2rem; }
+        .benefit-list li { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; font-size: 1.1rem; }
+        .benefit-list i { color: var(--clr-primary); }
+        
+        /* Configurator */
+        .config-row { margin-bottom: 2rem; }
+        .config-row label { display: block; margin-bottom: 0.8rem; font-weight: 600; color: var(--clr-text-main); }
+        .config-select {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(170,221,0,0.3);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+            appearance: none;
+        }
+        .config-select:focus { border-color: var(--clr-primary); box-shadow: 0 0 15px rgba(170,221,0,0.2); }
+        
+        /* Price Suggestion */
+        .price-box {
+            background: rgba(170,221,0,0.05);
+            border: 1px dashed var(--clr-primary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .suggest-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 1rem;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--clr-primary);
+            font-size: 1.5rem;
+            font-family: var(--ff-heading);
+            border-radius: 8px;
+            text-align: center;
+            margin: 1rem auto;
+            display: block;
+        }
+        
+        .float-wpp {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+            z-index: 100;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .float-wpp:hover { transform: scale(1.1); }
+        
+        @media (max-width: 900px) {
+            .service-content-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR (Simplified) -->
+    <nav class="navbar" style="background: rgba(8,8,8,0.9); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="font-family:'Outfit', sans-serif; font-weight:900; letter-spacing:1px; text-transform:uppercase;">VÓS</a>
+            <div class="nav-right">
+                <a href="index.html" class="btn" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; padding:0.5rem 1.5rem;">← Voltar ao Início</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <main id="service-app">
+        <header class="service-hero">
+            <div class="service-icon-large" id="render-icon"></div>
+            <h1 class="service-title" id="render-title">Carregando...</h1>
+            <p class="service-subtitle" id="render-subtitle"></p>
+        </header>
+        
+        <div class="service-content-grid">
+            <!-- Left Col: Copy & Benefits -->
+            <div class="info-card">
+                <h3 style="font-family: var(--ff-heading); font-size: 2rem; margin-bottom: 1.5rem;">Sobre o Serviço</h3>
+                <p id="render-desc" style="color: var(--clr-text-muted); line-height: 1.8; font-size: 1.1rem;"></p>
+                
+                <h4 style="margin-top: 3rem; font-size: 1.3rem;">O que está incluso:</h4>
+                <ul class="benefit-list" id="render-benefits"></ul>
+            </div>
+            
+            <!-- Right Col: Configurator & Price Suggestion -->
+            <div class="info-card" style="border-color: var(--clr-primary-glass);">
+                <h3 style="font-family: var(--ff-heading); font-size: 2rem; margin-bottom: 1.5rem;">Personalize seu pedido</h3>
+                <p style="color: var(--clr-text-muted); margin-bottom: 2rem;">Selecione as opções que melhor atendem à sua necessidade.</p>
+                
+                <div id="render-configurator"></div>
+                
+                <div class="price-box">
+                    <h4 style="margin-bottom: 0.5rem;">Sugerir um Preço (R$)</h4>
+                    <p style="font-size: 0.9rem; color: var(--clr-text-muted);">Qual o seu orçamento ideal para este projeto?</p>
+                    <input type="number" id="suggested-price" class="suggest-input" placeholder="Ex: 3500">
+                    
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 1.2rem; font-size: 1.1rem;" onclick="sendProposal()">
+                        <i class="fab fa-whatsapp"></i> Enviar Proposta por WhatsApp
+                    </button>
+                    <p style="font-size: 0.8rem; color: #666; margin-top: 1rem; line-height: 1.4;">Ao clicar, você será redirecionado para o nosso WhatsApp com os detalhes da sua configuração.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Float Wpp -->
+    <a href="https://wa.me/5511922129185?text=Ol%C3%A1%21%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20servi%C3%A7os." class="float-wpp" target="_blank" title="Tirar dúvida rápida">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script src="servicos-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const serviceId = params.get('id');
+            
+            if (!serviceId || !servicosData[serviceId]) {
+                document.getElementById('service-app').innerHTML = '<div style="text-align:center; padding: 10rem 1rem;"><h2>Serviço não encontrado.</h2><a href="index.html" class="btn btn-primary">Voltar</a></div>';
+                return;
+            }
+            
+            const data = servicosData[serviceId];
+            
+            // Populate texts
+            document.getElementById('render-icon').innerHTML = `<i class="${data.icon}"></i>`;
+            document.getElementById('render-title').textContent = data.title;
+            document.getElementById('render-subtitle').textContent = data.subtitle;
+            document.getElementById('render-desc').textContent = data.description;
+            
+            // Populate benefits
+            const benList = document.getElementById('render-benefits');
+            data.benefits.forEach(b => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check-circle"></i> ${b}`;
+                benList.appendChild(li);
+            });
+            
+            // Populate Configurator
+            const confDiv = document.getElementById('render-configurator');
+            data.questions.forEach((q, idx) => {
+                const row = document.createElement('div');
+                row.className = 'config-row';
+                row.innerHTML = `<label>${q.label}</label>`;
+                
+                const select = document.createElement('select');
+                select.className = 'config-select config-answer';
+                select.dataset.label = q.label;
+                
+                q.options.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt.text;
+                    option.textContent = opt.text;
+                    select.appendChild(option);
+                });
+                
+                row.appendChild(select);
+                confDiv.appendChild(row);
+            });
+            
+            // Expose logic to window
+            window.sendProposal = function() {
+                const suggestedPrice = document.getElementById('suggested-price').value;
+                if(!suggestedPrice) {
+                    alert("Por favor, digite um valor sugerido para o projeto.");
+                    return;
+                }
+                
+                let configs = [];
+                document.querySelectorAll('.config-answer').forEach(sel => {
+                    configs.push(`- ${sel.dataset.label}: ${sel.value}`);
+                });
+                
+                const text = `Olá! Tenho interesse no serviço de *${data.title}*.\n\nMinhas configurações:\n${configs.join('\n')}\n\n*Orçamento sugerido:* R$ ${suggestedPrice}\n\nPodemos conversar?`;
+                const url = `https://wa.me/5511922129185?text=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
+            };
+        });
+    </script>
+</body>
+</html>

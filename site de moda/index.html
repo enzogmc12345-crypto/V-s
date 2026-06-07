@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Élise — Loja de Moda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #b02e48;
+            --secondary: #d29a44;
+            --bg-light: #ffffff;
+            --bg-gray: #f9f9f9;
+            --text-dark: #1a1a1a;
+            --text-muted: #888888;
+            --border-color: #e0e0e0;
+            --transition: all 0.3s ease;
+        }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
+
+        /* HEADER & NAVIGATION */
+        .top-bar { background-color: var(--primary); color: #ffffff; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; padding: 8px 50px; display: flex; justify-content: space-between; align-items: center; }
+        .top-bar a { color: #ffffff; text-decoration: none; margin-left: 15px; opacity: 0.8; transition: var(--transition); }
+        .top-bar a:hover { opacity: 1; }
+
+        .main-header { padding: 20px 50px; display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; background-color: var(--bg-light); }
+        .header-logo { display: flex; align-items: center; }
+        .header-logo img { height: 45px; }
+
+        .search-container { display: flex; justify-content: center; }
+        .search-bar { width: 80%; background-color: #f5f5f5; border-radius: 30px; display: flex; align-items: center; padding: 10px 20px; border: 1px solid transparent; transition: var(--transition); }
+        .search-bar:focus-within { border-color: var(--primary); background-color: #fff; }
+        .search-bar input { border: none; background: transparent; width: 100%; outline: none; font-family: 'Montserrat', sans-serif; font-size: 13px; color: var(--text-dark); }
+        .search-bar input::placeholder { color: #aaaaaa; }
+        .search-icon { color: #aaaaaa; font-size: 14px; cursor: pointer; }
+
+        .header-utils { display: flex; justify-content: flex-end; gap: 20px; align-items: center; }
+        .header-utils a { text-decoration: none; color: var(--text-dark); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); cursor: pointer; }
+        .header-utils a:hover { color: var(--primary); }
+
+        .category-nav { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 12px 50px; display: flex; justify-content: center; background-color: var(--bg-light); }
+        .category-nav ul { list-style: none; display: flex; align-items: center; }
+        .category-nav li { border-right: 1px solid var(--border-color); padding: 0 25px; }
+        .category-nav li:last-child { border-right: none; }
+        .category-nav a { text-decoration: none; color: var(--text-dark); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); cursor: pointer; }
+        .category-nav a:hover, .category-nav a.highlight { color: var(--primary); }
+
+        /* HERO BANNER SECTION */
+        .hero { padding: 30px 50px; background-color: var(--bg-light); }
+        .hero-banner { background-color: var(--secondary); border-radius: 4px; display: flex; align-items: center; justify-content: space-between; padding: 40px 60px; position: relative; overflow: hidden; }
+        .hero-text { color: #ffffff; z-index: 2; flex: 1; }
+        .hero-text h1 { font-size: 36px; font-weight: 800; line-height: 1.1; letter-spacing: 2px; text-transform: uppercase; }
+        .hero-text.left { text-align: left; }
+        .hero-text.right { text-align: right; }
+        
+        .hero-carousel-wrapper { overflow: hidden; width: 684px; display: flex; position: relative; z-index: 2; border: 6px solid #ffffff; background: #ffffff; border-radius: 2px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .hero-images { display: flex; gap: 6px; transition: transform 0.4s ease-in-out; }
+        .hero-images img { width: 220px; height: 350px; object-fit: cover; flex-shrink: 0; }
+        
+        .hero-btn { display: inline-block; margin-top: 15px; padding: 12px 24px; background: transparent; border: 2px solid #ffffff; color: #ffffff; text-transform: uppercase; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-decoration: none; transition: var(--transition); }
+        .hero-btn:hover { background: #ffffff; color: var(--secondary); }
+        .nav-arrows { position: absolute; top: 50%; width: 100%; left: 0; display: flex; justify-content: space-between; padding: 0 20px; transform: translateY(-50%); z-index: 10; pointer-events: none; }
+        .nav-arrows span { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,255,255,0.9); color: var(--secondary); border-radius: 50%; pointer-events: auto; cursor: pointer; font-weight: bold; transition: var(--transition); }
+        .nav-arrows span:hover { background: var(--primary); color: #fff; }
+
+        /* PRODUCTS MAIN GRID */
+        .catalog-container { padding: 40px 50px 60px; }
+        .catalog-header { text-align: center; margin-bottom: 40px; }
+        .catalog-title { color: var(--primary); font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1250px; margin: 0 auto; }
+        .product-card { position: relative; display: flex; flex-direction: column; cursor: pointer; display: none; } /* default hidden until filtered */
+        .product-card.active { display: flex; } /* visible when active */
+        .product-image { width: 100%; aspect-ratio: 3/4; overflow: hidden; background: #f0f0f0; margin-bottom: 15px; position: relative; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .product-badge { position: absolute; top: 10px; left: 10px; background: var(--secondary); color: #fff; font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 8px; letter-spacing: 1px; z-index: 2; }
+        
+        .product-info { display: flex; flex-direction: column; gap: 4px; text-align: center; }
+        .product-info h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; color: var(--text-dark); letter-spacing: 0.5px; }
+        .product-info .desc { font-size: 11px; color: var(--text-muted); }
+        .product-info .price { font-size: 16px; font-weight: 700; color: var(--primary); margin-top: 5px; }
+
+        /* PRODUCT MODAL */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content { background: #fff; width: 900px; max-width: 90%; max-height: 90vh; border-radius: 8px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative; box-shadow: 0 15px 50px rgba(0,0,0,0.3); }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 24px; color: #1a1a1a; cursor: pointer; z-index: 2010; font-weight: bold; }
+        .modal-image { background: #f5f5f5; width: 100%; height: 100%; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .modal-image img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-details { padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 20px; overflow-y: auto; }
+        .modal-title { font-size: 24px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+        .modal-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        .modal-specs { font-size: 11px; color: #666; background: #f9f9f9; padding: 15px; border-radius: 4px; line-height: 1.6; border-left: 3px solid var(--secondary); margin-top: 5px; }
+        .modal-specs strong { color: var(--text-dark); font-weight: 600; }
+        .modal-price { font-size: 26px; font-weight: 800; color: var(--text-dark); }
+        .modal-size-selector { display: flex; gap: 10px; margin-top: 10px; }
+        .size-btn { width: 40px; height: 40px; border: 1px solid var(--border-color); background: #fff; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); font-weight: 600; font-size: 14px; }
+        .size-btn:hover, .size-btn.selected { border-color: var(--primary); color: var(--primary); }
+        .btn-buy { margin-top: 20px; padding: 18px; width: 100%; background: var(--secondary); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 14px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; border: none; border-radius: 4px; cursor: pointer; transition: var(--transition); }
+        .btn-buy:hover { background: var(--primary); }
+
+        /* BRANDING SECTION */
+        .brand-section { background: var(--bg-gray); text-align: center; padding: 60px 40px; margin: 0 50px 60px; border-radius: 4px; }
+        .brand-section h2 { color: var(--text-dark); font-size: 24px; margin-bottom: 15px; text-transform: uppercase; }
+        .brand-section p { color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.6; font-size: 14px; }
+
+        /* FOOTER */
+        footer { background: var(--primary); color: #ffffff; padding: 60px 50px 30px; }
+        .footer-content { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-logo img { height: 40px; filter: invert(1) brightness(2); margin-bottom: 15px; }
+        .footer-col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-weight: 600; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; transition: var(--transition); }
+        .footer-col a:hover { color: #fff; text-decoration: underline; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.7); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-banner { flex-direction: column; text-align: center; padding: 40px 20px; gap: 30px; }
+            .hero-text.left, .hero-text.right { text-align: center; }
+            .hero-carousel-wrapper { width: 100%; max-width: 500px; }
+            .hero-images img { width: calc(33.333% - 4px); height: auto; aspect-ratio: 2/3; }
+            .products-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .modal-content { grid-template-columns: 1fr; max-width: 90%; max-height: 85vh; overflow-y: auto; }
+            .modal-image { height: 400px; }
+        }
+        @media (max-width: 768px) {
+            .main-header { display: flex; flex-direction: column; gap: 15px; padding: 15px; }
+            .category-nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .category-nav li { border: none; padding: 5px 10px; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .modal-image { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>Frete Grátis nas compras acima de R$ 299,00 ♥</div>
+        <div>
+            <a href="#">Trocas e Devoluções</a>
+            <a href="#">Rastrear Pedido</a>
+            <a href="#">Fale Conosco</a>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-logo">
+            <img src="logo.png" alt="Élise Moda">
+        </div>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" placeholder="O que você está procurando hoje?">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+        <div class="header-utils">
+            <a href="#">Minha Conta</a>
+            <a href="#">Meus Favoritos</a>
+            <a href="#">Carrinho</a>
+        </div>
+    </header>
+
+    <nav class="category-nav">
+        <ul>
+            <li><a onclick="filterCategory('todas')" id="nav-todas" class="highlight">NOVIDADES</a></li>
+            <li><a onclick="filterCategory('vestidos')" id="nav-vestidos">VESTIDOS</a></li>
+            <li><a onclick="filterCategory('calcas')" id="nav-calcas">CALÇAS E JEANS</a></li>
+            <li><a onclick="filterCategory('blusas')" id="nav-blusas">BLUSAS E CROPPEDS</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO CAROUSEL -->
+    <div class="hero">
+        <div class="hero-banner">
+            <div class="nav-arrows">
+                <span id="prevBtn">&lt;</span>
+                <span id="nextBtn">&gt;</span>
+            </div>
+            <div class="hero-text left">
+                <h1>SEJA UMA<br>REVENDE<br>DORA</h1>
+            </div>
+            <div class="hero-carousel-wrapper">
+                <div class="hero-images" id="heroTrack">
+                    <!-- Updated 100% verified fashion images -->
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&h=700&fit=crop" alt="Look 1">
+                    <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500&h=700&fit=crop" alt="Look 2">
+                    <img src="https://images.unsplash.com/photo-1475178626620-a4d074967452?w=500&h=700&fit=crop" alt="Look 3">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&h=700&fit=crop" alt="Look 4">
+                    <img src="https://images.unsplash.com/photo-1503342394128-c104d54dba01?w=500&h=700&fit=crop" alt="Look 5">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&h=700&fit=crop" alt="Look 6">
+                </div>
+            </div>
+            <div class="hero-text right">
+                <h1>FASHION<br>TRENDS</h1>
+                <a onclick="filterCategory('todas')" class="hero-btn" style="cursor:pointer">Clique e saiba mais</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CATALOG GRID -->
+    <div class="catalog-container">
+        <div class="catalog-header">
+            <h2 class="catalog-title" id="catalogTitle">ÚLTIMOS LANÇAMENTOS</h2>
+        </div>
+        
+        <div class="products-grid" id="productGrid">
+            
+            <!-- VESTIDOS -->
+            <div class="product-card active" data-category="vestidos" onclick="openModal('Vestido Tubinho Plus', 'Vestido canelado premium com ajuste anatômico que desenha a silhueta. Perfeito para ocasiões onde o conforto é prioridade mas não se abre mão da elegância.', 'R$ 139,90', 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&h=1000&fit=crop')">
+                <div class="product-badge">New In</div>
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=800&fit=crop" alt="Vestido Tubinho"></div>
+                <div class="product-info"><h3>Vestido Tubinho Plus</h3><span class="desc">Canelado Premium</span><span class="price">R$ 139,90</span></div>
+            </div>
+            <div class="product-card active" data-category="vestidos" onclick="openModal('Vestido Midi Fenda', 'Confeccionado em viscolinho, este vestido garante frescor e caimento impecável. Fenda lateral sutil para adicionar movimento e charme.', 'R$ 159,90', 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=800&h=1000&fit=crop')">
+                <div class="product-badge">Top Vendas</div>
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&h=800&fit=crop" alt="Vestido Festa"></div>
+                <div class="product-info"><h3>Vestido Midi Fenda</h3><span class="desc">Viscolinho</span><span class="price">R$ 159,90</span></div>
+            </div>
+            <div class="product-card active" data-category="vestidos" onclick="openModal('Vestido Basic Black', 'O clássico vestido preto básico, feito em malha com elastano de alta gramatura que não fica transparente.', 'R$ 89,90', 'https://images.unsplash.com/photo-1495385794356-15371f348c31?w=800&h=1000&fit=crop')">
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?w=600&h=800&fit=crop" alt="Vestido Básico"></div>
+                <div class="product-info"><h3>Vestido Basic Black</h3><span class="desc">Com elastano</span><span class="price">R$ 89,90</span></div>
+            </div>
+            
+            <!-- CALÇAS -->
+            <div class="product-card active" data-category="calcas" onclick="openModal('Calça Wide Leg Jeans', 'A modelagem pantalona mais desejada do momento. Com cintura super alta, é a escolha ideal para um visual fashionista e muito confortável.', 'R$ 169,90', 'https://images.unsplash.com/photo-1475178626620-a4d074967452?w=800&h=1000&fit=crop')">
+                <div class="product-badge">Esgotando</div>
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1475178626620-a4d074967452?w=600&h=800&fit=crop" alt="Calça Wide Leg"></div>
+                <div class="product-info"><h3>Calça Wide Leg Jeans</h3><span class="desc">Modelagem pantalona</span><span class="price">R$ 169,90</span></div>
+            </div>
+            <div class="product-card active" data-category="calcas" onclick="openModal('Jeans Skinny Classic', 'Calça jeans modelagem skinny, lavagem média. Possui tecnologia de alta elasticidade e cintura alta que abraça o corpo perfeitamente.', 'R$ 149,90', 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800&h=1000&fit=crop')">
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&h=800&fit=crop" alt="Calça Jeans Skinny"></div>
+                <div class="product-info"><h3>Jeans Skinny Classic</h3><span class="desc">Cintura Alta</span><span class="price">R$ 149,90</span></div>
+            </div>
+            <div class="product-card active" data-category="calcas" onclick="openModal('Pantalona Alfaiataria', 'Elegância em cada movimento. Feita em tecido plano de alfaiataria com perfeito caimento. Ideal para o escritório ou jantares sofisticados.', 'R$ 189,90', 'https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=800&h=1000&fit=crop')">
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?w=600&h=800&fit=crop" alt="Calça Pantalona Alfaiataria"></div>
+                <div class="product-info"><h3>Pantalona Alfaiataria</h3><span class="desc">Tecido Plano</span><span class="price">R$ 189,90</span></div>
+            </div>
+
+            <!-- BLUSAS E CROPPEDS -->
+            <div class="product-card active" data-category="blusas" onclick="openModal('Cropped Manga Longa', 'Cropped canelado com detalhe na gola e recortes laterais de mangas longas, unindo proteção do vento com um design super autêntico.', 'R$ 69,90', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&h=1000&fit=crop')">
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop" alt="Cropped Manga Longa"></div>
+                <div class="product-info"><h3>Cropped Manga Longa</h3><span class="desc">Ajuste anatômico</span><span class="price">R$ 69,90</span></div>
+            </div>
+            <div class="product-card active" data-category="blusas" onclick="openModal('T-Shirt Lisa Básica', 'A T-shirt que toda mulher precisa ter. Fio de algodão leve e macio. Excelente durabilidade nas lavagens.', 'R$ 39,90', 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=1000&fit=crop')">
+                <div class="product-badge">Top Vendas</div>
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=800&fit=crop" alt="T-Shirt Lisa"></div>
+                <!-- Corrected image from food to a real T-shirt -->
+                <div class="product-info"><h3>T-Shirt Lisa Básica</h3><span class="desc">Essencial do dia a dia</span><span class="price">R$ 39,90</span></div>
+            </div>
+            <div class="product-card active" data-category="blusas" onclick="openModal('Cardigan Modal', 'Cardigan perfeito para o ar condicionado do trabalho ou o ventinho de final de tarde. Tramas em modal luxuoso e macio.', 'R$ 89,90', 'https://images.unsplash.com/photo-1503342394128-c104d54dba01?w=800&h=1000&fit=crop')">
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1503342394128-c104d54dba01?w=600&h=800&fit=crop" alt="Cardigan Leve"></div>
+                <div class="product-info"><h3>Cardigan Modal</h3><span class="desc">Fio Premium</span><span class="price">R$ 89,90</span></div>
+            </div>
+            <div class="product-card active" data-category="blusas" onclick="openModal('Body com Renda', 'Elevando seus looks para sair a noite. Body com apliques de renda, fechamento em colchetes e recorte ousado.', 'R$ 65,90', 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&h=1000&fit=crop')">
+                <div class="product-image"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop" alt="Body Renda"></div>
+                <div class="product-info"><h3>Body com Renda</h3><span class="desc">Essencial da noite</span><span class="price">R$ 65,90</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-image">
+                <img id="modalImg" src="" alt="Produto">
+            </div>
+            <div class="modal-details">
+                <h2 class="modal-title" id="modalTitle">Nome do Produto</h2>
+                <div class="modal-price" id="modalPrice">R$ 0,00</div>
+                <p class="modal-desc" id="modalDesc">Descrição longa e detalhada sobre este produto maravilhoso feito para vestir você perfeitamente em todas as ocasiões.</p>
+                
+                <div class="modal-specs">
+                    <strong>Medidas da Modelo:</strong> Altura: 1,71m | Busto: 84cm | Cintura: 65cm | Quadril: 93cm<br>
+                    <strong>Modelo Veste:</strong> Tamanho P<br>
+                    <strong>Composição:</strong> 90% Viscose | 10% Elastano<br>
+                    <strong>Cuidados:</strong> Lavar à mão, secar à sombra.
+                </div>
+                
+                <h4 style="margin-top:10px; font-size:12px; text-transform:uppercase; color:var(--text-muted)">Escolha o Tamanho:</h4>
+                <div class="modal-size-selector">
+                    <div class="size-btn">P</div>
+                    <div class="size-btn selected">M</div>
+                    <div class="size-btn">G</div>
+                    <div class="size-btn">GG</div>
+                </div>
+                
+                <button class="btn-buy" onclick="alert('Produto adicionado ao seu carrinho!')">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo"><img src="logo.png" alt="Élise Moda"></div>
+                <p style="font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.5; margin-bottom: 10px;">A sua loja favorita para montar os melhores looks com personalidade.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Atendimento</h4>
+                <ul>
+                    <li><a href="#">Central de Ajuda</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                    <li><a href="#">Política de Trocas</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Formas de Pagamento</h4>
+                <p style="font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.5;">Pix, Boleto e Cartões em até 6x sem juros.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Élise Moda e Varejo. Todos os direitos reservados. | Desenvolvido por <strong>vós</strong></div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Hero Carousel
+        const track = document.getElementById('heroTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const heroImages = track.querySelectorAll('img');
+        
+        let currentIndex = 0;
+        const maxIndex = heroImages.length - 3; 
+
+        function updateCarousel() {
+            const displacement = currentIndex * -226;
+            track.style.transform = `translateX(${displacement}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < maxIndex) currentIndex++;
+            else currentIndex = 0;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) currentIndex--;
+            else currentIndex = maxIndex;
+            updateCarousel();
+        });
+
+        // Category Filtering System
+        function filterCategory(category) {
+            // Update Title
+            const titleMap = {
+                'todas': 'ÚLTIMOS LANÇAMENTOS',
+                'vestidos': 'VESTIDOS',
+                'calcas': 'CALÇAS E JEANS',
+                'blusas': 'BLUSAS E CROPPEDS'
+            };
+            document.getElementById('catalogTitle').innerText = titleMap[category];
+
+            // Update Nav Highlighting
+            document.querySelectorAll('.category-nav a').forEach(a => a.classList.remove('highlight'));
+            document.getElementById('nav-' + category)?.classList.add('highlight');
+
+            // Find all product cards and toggle visibility
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(p => {
+                if (category === 'todas') {
+                    p.classList.add('active'); // Show all
+                } else {
+                    if (p.getAttribute('data-category') === category) {
+                        p.classList.add('active'); // Match Category
+                    } else {
+                        p.classList.remove('active'); // Hide others
+                    }
+                }
+            });
+            
+            // Scroll to catalog section slightly below header
+            const catalog = document.querySelector('.catalog-container');
+            window.scrollTo({ top: catalog.offsetTop - 50, behavior: 'smooth' });
+        }
+
+        // Product Details Modal
+        const modal = document.getElementById('productModal');
+        
+        function openModal(title, desc, price, imgUrl) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalImg').src = imgUrl;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close Modal clicking outside content
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) closeModal();
+        });
+
+        // Size button selector logic
+        const sizeBtns = document.querySelectorAll('.size-btn');
+        sizeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizeBtns.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>

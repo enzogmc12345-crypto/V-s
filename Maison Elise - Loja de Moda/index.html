@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Élise — Moda Feminina de Luxo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C8A96E;
+            --gold-light: #D4BA8A;
+            --dark: #1A1A1A;
+            --darker: #0D0D0D;
+            --cream: #F5F0EB;
+            --white: #FFFFFF;
+            --gray: #8A8A8A;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--darker);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(13, 13, 13, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 12px 60px;
+            background: rgba(13, 13, 13, 0.95);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            font-weight: 400;
+            font-style: italic;
+            color: var(--white);
+            font-size: 18px;
+            display: block;
+            letter-spacing: 5px;
+            margin-top: -2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 1.5px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(13,13,13,0.75), rgba(13,13,13,0.85)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1920&h=1080&fit=crop') center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(200, 169, 110, 0.06) 0%, transparent 60%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-tag {
+            font-size: 12px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--white);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 16px;
+            font-weight: 300;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 50px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            color: var(--dark);
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator .line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+        /* ===== SECTIONS GENERAL ===== */
+        section {
+            padding: 120px 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-tag {
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto;
+        }
+
+        /* ===== COLLECTION / PRODUTOS ===== */
+        #colecao {
+            background: var(--dark);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            group: true;
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(13,13,13,0.95), transparent);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-overlay {
+            transform: translateY(0);
+        }
+
+        .product-overlay .btn-small {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .product-overlay .btn-small:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .product-info {
+            padding: 20px 0;
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .product-info .price {
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .product-info .old-price {
+            font-size: 12px;
+            color: var(--gray);
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 4px 12px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        /* ===== ABOUT / SOBRE ===== */
+        #sobre {
+            background: var(--darker);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid var(--gold);
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .about-text h3 em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.9;
+            margin-bottom: 16px;
+            font-weight: 300;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(200, 169, 110, 0.2);
+        }
+
+        .stat h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .stat p {
+            font-size: 11px !important;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray) !important;
+        }
+
+        /* ===== FEATURES ===== */
+        #diferenciais {
+            background: var(--dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 30px;
+            border: 1px solid rgba(200, 169, 110, 0.1);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 24px;
+            color: var(--gold);
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter {
+            background: linear-gradient(135deg, rgba(200, 169, 110, 0.08), rgba(200, 169, 110, 0.03));
+            text-align: center;
+            padding: 100px 60px;
+        }
+
+        .newsletter h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .newsletter p {
+            color: var(--gray);
+            font-size: 15px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 0;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(200, 169, 110, 0.3);
+            border-right: none;
+            color: var(--white);
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+            letter-spacing: 1px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--gray);
+        }
+
+        .newsletter-form input:focus {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .newsletter-form button {
+            padding: 16px 32px;
+            background: var(--gold);
+            border: 1px solid var(--gold);
+            color: var(--dark);
+            font-family: 'Raleway', sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--gold-light);
+        }
+
+        /* ===== CONTATO ===== */
+        #contato {
+            background: var(--darker);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .contact-info p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail .icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(200, 169, 110, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .contact-detail span {
+            font-size: 14px;
+            color: var(--cream);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(200, 169, 110, 0.2);
+            color: var(--white);
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .contact-form textarea {
+            height: 140px;
+            resize: none;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        .btn-submit {
+            padding: 16px 40px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Raleway', sans-serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .btn-submit:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            padding: 60px;
+            border-top: 1px solid rgba(200, 169, 110, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(200, 169, 110, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--gold);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(200, 169, 110, 0.08);
+            font-size: 12px;
+            color: var(--gray);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 24px;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(13, 13, 13, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            section {
+                padding: 80px 24px;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-right: 1px solid rgba(200, 169, 110, 0.3);
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="logo">
+            Maison<span>Élise</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#colecao">Coleção</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content fade-in">
+            <p class="hero-tag">Nova Coleção Outono / Inverno 2026</p>
+            <h1>Elegância que <em>define</em> quem você é</h1>
+            <p>Peças exclusivas para mulheres que transformam cada momento em uma declaração de estilo e sofisticação.</p>
+            <a href="#colecao" class="btn-primary">Explorar Coleção</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="line"></div>
+        </div>
+    </section>
+
+    <!-- COLEÇÃO -->
+    <section id="colecao">
+        <div class="section-header fade-in">
+            <p class="section-tag">Curadoria Exclusiva</p>
+            <h2 class="section-title">Nossa Coleção</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="products-grid">
+            <!-- 1. Vestido Preto Longo -->
+            <div class="product-card fade-in">
+                <div class="product-badge">Novo</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&h=800&fit=crop&crop=top" alt="Vestido Noir Classique">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Vestido Noir Classique</h3>
+                    <span class="price">R$ 1.290,00</span>
+                </div>
+            </div>
+            <!-- 2. Blazer Feminino Bege/Dourado -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1548624313-0396c75e4b1a?w=600&h=800&fit=crop&crop=top" alt="Blazer Dourado Élise">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Blazer Dourado Élise</h3>
+                    <span class="price">R$ 890,00</span>
+                </div>
+            </div>
+            <!-- 3. Saia Midi Plissada -->
+            <div class="product-card fade-in">
+                <div class="product-badge">Destaque</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1530435460869-d13625c69bbf?w=600&h=800&fit=crop&crop=center" alt="Saia Midi Seda Pura">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Saia Midi Seda Pura</h3>
+                    <span class="price">R$ 750,00</span>
+                    <span class="old-price">R$ 950,00</span>
+                </div>
+            </div>
+            <!-- 4. Calça Palazzo Feminina -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop&crop=center" alt="Calça Palazzo Premium">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Calça Palazzo Premium</h3>
+                    <span class="price">R$ 680,00</span>
+                </div>
+            </div>
+            <!-- 5. Camisa Cetim Rosa -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=800&fit=crop&crop=top" alt="Camisa Cetim Rosé">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Camisa Cetim Rosé</h3>
+                    <span class="price">R$ 490,00</span>
+                </div>
+            </div>
+            <!-- 6. Trench Coat Bege Feminino -->
+            <div class="product-card fade-in">
+                <div class="product-badge">Limitado</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=800&fit=crop&crop=top" alt="Trench Coat Caramelo">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Trench Coat Caramelo</h3>
+                    <span class="price">R$ 1.890,00</span>
+                </div>
+            </div>
+            <!-- 7. Bolsa de Couro Marrom -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=800&fit=crop&crop=center" alt="Bolsa Couro Italiano">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Bolsa Couro Italiano</h3>
+                    <span class="price">R$ 2.350,00</span>
+                </div>
+            </div>
+            <!-- 8. Scarpin Preto -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600&h=800&fit=crop&crop=center" alt="Scarpin Verniz Noir">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Scarpin Verniz Noir</h3>
+                    <span class="price">R$ 590,00</span>
+                </div>
+            </div>
+            <!-- 9. Vestido Vermelho Longo -->
+            <div class="product-card fade-in">
+                <div class="product-badge">Novo</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&h=800&fit=crop&crop=top" alt="Vestido Rouge Passion">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Vestido Rouge Passion</h3>
+                    <span class="price">R$ 1.490,00</span>
+                </div>
+            </div>
+            <!-- 10. Jaqueta de Couro Feminina -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=800&fit=crop&crop=top" alt="Jaqueta Couro Noir">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Jaqueta Couro Noir</h3>
+                    <span class="price">R$ 1.650,00</span>
+                </div>
+            </div>
+            <!-- 11. Vestido Branco Elegante -->
+            <div class="product-card fade-in">
+                <div class="product-badge">Destaque</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=800&fit=crop&crop=top" alt="Vestido Blanc Soirée">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Vestido Blanc Soirée</h3>
+                    <span class="price">R$ 1.590,00</span>
+                </div>
+            </div>
+            <!-- 12. Óculos de Sol Feminino -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=800&fit=crop&crop=center" alt="Óculos Soleil Doré">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Óculos Soleil Doré</h3>
+                    <span class="price">R$ 420,00</span>
+                </div>
+            </div>
+            <!-- 13. Lenço de Seda -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&h=800&fit=crop&crop=center" alt="Lenço Seda Française">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Lenço Seda Française</h3>
+                    <span class="price">R$ 320,00</span>
+                </div>
+            </div>
+            <!-- 14. Colar Dourado -->
+            <div class="product-card fade-in">
+                <div class="product-badge">Limitado</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=800&fit=crop&crop=center" alt="Colar Lumière Dorée">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Colar Lumière Dorée</h3>
+                    <span class="price">R$ 780,00</span>
+                </div>
+            </div>
+            <!-- 15. Sandália de Salto -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&h=800&fit=crop&crop=top" alt="Sandália Étoile Dorée">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Sandália Étoile Dorée</h3>
+                    <span class="price">R$ 690,00</span>
+                </div>
+            </div>
+            <!-- 16. Clutch Noite -->
+            <div class="product-card fade-in">
+                <div class="product-badge">Novo</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&h=800&fit=crop&crop=center" alt="Clutch Nuit Étoilée">
+                    <div class="product-overlay">
+                        <a href="#" class="btn-small">Ver Detalhes</a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Clutch Nuit Étoilée</h3>
+                    <span class="price">R$ 540,00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+        <div class="about-grid">
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&h=900&fit=crop&crop=center" alt="Maison Élise - Atelier de moda feminina de luxo">
+            </div>
+            <div class="about-text fade-in">
+                <p class="section-tag">Nossa História</p>
+                <h3>Onde a moda encontra a <em>arte</em></h3>
+                <p>A Maison Élise nasceu do desejo de oferecer moda feminina de alto padrão com um toque único e pessoal. Cada peça é cuidadosamente selecionada para mulheres que valorizam qualidade, exclusividade e elegância atemporal.</p>
+                <p>Trabalhamos com tecidos nobres, acabamentos impecáveis e modelagens que respeitam e celebram cada silhueta feminina. Mais do que roupas, entregamos confiança.</p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h4>8+</h4>
+                        <p>Anos no mercado</p>
+                    </div>
+                    <div class="stat">
+                        <h4>2k+</h4>
+                        <p>Clientes fiéis</p>
+                    </div>
+                    <div class="stat">
+                        <h4>100%</h4>
+                        <p>Exclusividade</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section id="diferenciais">
+        <div class="section-header fade-in">
+            <p class="section-tag">Por que nos escolher</p>
+            <h2 class="section-title">Nossos Diferenciais</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">&#10023;</div>
+                <h3>Peças Exclusivas</h3>
+                <p>Tiragem limitada em cada coleção. Você nunca encontrará outra pessoa usando a mesma peça que a sua.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">&#9830;</div>
+                <h3>Tecidos Premium</h3>
+                <p>Seda italiana, algodão egípcio e linho francês. Só trabalhamos com os melhores tecidos do mundo.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">&#9733;</div>
+                <h3>Atendimento VIP</h3>
+                <p>Consultoria de estilo personalizada e entregas com embalagem luxo, porque cada detalhe importa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter">
+        <div class="fade-in">
+            <p class="section-tag">Fique por dentro</p>
+            <h2>Receba nossas novidades</h2>
+            <p>Seja a primeira a conhecer nossas novas coleções e ofertas exclusivas.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Obrigada! Você foi cadastrada com sucesso.');">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Inscrever</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CONTATO -->
+    <section id="contato">
+        <div class="section-header fade-in">
+            <p class="section-tag">Fale conosco</p>
+            <h2 class="section-title">Contato</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3>Adoraríamos ouvir você</h3>
+                <p>Tem alguma dúvida, sugestão ou quer agendar uma consultoria de estilo? Entre em contato conosco.</p>
+                <div class="contact-detail">
+                    <div class="icon">&#9993;</div>
+                    <span>contato@maisonelise.com.br</span>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon">&#9742;</div>
+                    <span>+55 (11) 99999-0000</span>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon">&#9906;</div>
+                    <span>Rua Oscar Freire, 1200 — São Paulo, SP</span>
+                </div>
+            </div>
+            <form class="contact-form fade-in" onsubmit="event.preventDefault(); alert('Mensagem enviada! Retornaremos em breve.');">
+                <input type="text" placeholder="Seu nome" required>
+                <input type="email" placeholder="Seu e-mail" required>
+                <textarea placeholder="Sua mensagem..." required></textarea>
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Maison Élise</div>
+            <ul class="footer-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#colecao">Coleção</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="#" title="Instagram">&#9679;</a>
+                <a href="#" title="Facebook">&#9679;</a>
+                <a href="#" title="Pinterest">&#9679;</a>
+            </div>
+        </div>
+        <p class="footer-bottom">&copy; 2026 Maison Élise. Todos os direitos reservados. Feito com amor e elegância.</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

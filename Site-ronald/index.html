@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR Barber Shop | Seu estilo começa aqui</title>
+    <meta name="description"
+        content="Barbearia premium. Cortes de qualidade e atendimento pensado para valorizar sua presença. Agende seu horário!">
+    <!-- Google Fonts: Plus Jakarta Sans for body, Sora for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header id="header" class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="fotos-galeria/8.png" alt="RR Barber Shop Logo" class="nav-logo">
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#hero" class="nav-link">Início</a></li>
+                    <li><a href="#about" class="nav-link">Sobre</a></li>
+                    <li><a href="#services" class="nav-link">Serviços</a></li>
+                    <li><a href="#pricing" class="nav-link">Preços</a></li>
+                    <li><a href="#gallery" class="nav-link">Galeria</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/5511993615023" target="_blank"
+                    class="btn btn-primary btn-sm booksy-btn">Agendar</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+        <div class="hero-bg" style="background-image: url('imagens/faixada.png');">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Seu estilo<br><span class="highlight">começa aqui</span></h1>
+            <p class="hero-subtitle">Ambiente premium, cortes de qualidade e atendimento pensado para valorizar sua
+                presença.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/5511993615023" target="_blank" class="btn btn-primary btn-icon booksy-btn">
+                    Agendar agora <i class="fas fa-calendar-check"></i>
+                </a>
+                <a href="https://wa.me/5511993615023" target="_blank" class="btn btn-outline btn-icon">
+                    Falar no WhatsApp <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about section">
+        <div class="container about-container">
+            <div class="about-image-wrapper">
+                <img src="imagens/salão-de-noite.png" alt="Interior da RR Barber Shop" class="about-image">
+                <div class="experience-badge">
+                    <span class="badge-number"><i class="fas fa-crown"></i></span>
+                    <span class="badge-text">Ambiente<br>Premium</span>
+                </div>
+            </div>
+            <div class="about-content">
+                <span class="section-tag">A Barbearia</span>
+                <h2 class="section-title">Na RR Barber Shop, cada <span>detalhe importa</span>.</h2>
+                <p class="section-description">
+                    Do ambiente ao acabamento final, tudo é pensado para entregar uma experiência de cuidado, estilo e
+                    presença. Não somos apenas um salão para cortar cabelo, somos o seu momento de recarregar, cuidar da
+                    aparência e elevar sua auto-estima e confiança.
+                </p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-pencil-ruler"></i>
+                        <span>Cortes Sob Medida</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-mug-hot"></i>
+                        <span>Ambiente Acolhedor</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-spa"></i>
+                        <span>Produtos Premium</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEER & RAZOR SECTION -->
+    <section class="gringo-section section">
+        <div class="container gringo-container">
+            <div class="gringo-content">
+                <span class="section-tag">Barbearia Estilo Gringo</span>
+                <h2 class="section-title">Navalha afiada e muita <span>breja gelada</span></h2>
+                <p class="section-description" style="margin-left: 0;">
+                    Aqui na RR Barber Shop, o seu momento de cuidado não se resume apenas a um corte. Aproveite para
+                    relaxar tomando uma cerveja estupidamente gelada enquanto cuidamos do seu visual com precisão
+                    cirúrgica.
+                </p>
+                <div class="gringo-info">
+                    <i class="far fa-clock"></i> Funcionando a partir das 16h
+                </div>
+            </div>
+            <div class="gringo-image-wrapper">
+                <img src="imagens/heineken-navalha.png" alt="Cerveja Heineken gelada e navalha de barbeiro"
+                    class="gringo-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services section bg-graphite">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">Especialidades</span>
+                <h2 class="section-title">Cortes e cuidados que <span>acompanham seu estilo</span></h2>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cut"></i></div>
+                    <h3 class="service-name">Corte</h3>
+                    <p class="service-desc">Alinhamento perfeito, degradê e finalização como você merece.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
+                    <h3 class="service-name">Barba</h3>
+                    <p class="service-desc">Toalha quente e modelagem precisa para uma barba de respeito.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card highlighted">
+                    <div class="service-icon"><i class="fas fa-star"></i></div>
+                    <h3 class="service-name">Combo: Corte + Barba</h3>
+                    <p class="service-desc">A experiência completa de cuidado que renova sua presença.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-pump-medical"></i></div>
+                    <h3 class="service-name">Barboterapia</h3>
+                    <p class="service-desc">Relaxamento e cuidados profundos para uma pele e fios saudáveis.</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-spray-can"></i></div>
+                    <h3 class="service-name">Progressiva</h3>
+                    <p class="service-desc">Redução de volume e alinhamento com os melhores produtos.</p>
+                </div>
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-ruler"></i></div>
+                    <h3 class="service-name">Pezinho / Acabamento</h3>
+                    <p class="service-desc">Lapidação dos detalhes para manter sua imagem sempre alinhada.</p>
+                </div>
+            </div>
+            <div class="text-center mt-row">
+                <a href="#pricing" class="btn btn-outline">Conferir Todos os Serviços</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="pricing section">
+        <div class="container">
+            <div class="pricing-container">
+                <div class="pricing-header">
+                    <span class="section-tag">Tabela de Preços</span>
+                    <h2 class="section-title">Serviços & <span>Valores</span></h2>
+                    <p>Valores que refletem a qualidade dos nossos serviços, tempo dedicado ao seu cuidado e a nossa
+                        estrutura premium.</p>
+                    <a href="https://wa.me/5511993615023" target="_blank"
+                        class="btn btn-primary mt-row booksy-btn">Agendar Seu Horário</a>
+                </div>
+                <div class="pricing-list">
+                    <!-- 1. Corte de Cabelo -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Corte de Cabelo</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 45,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 50,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Barba -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Barba</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 40,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 45,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Cabelo e Barba (Combo) -->
+                    <div class="price-item active">
+                        <div class="price-info">
+                            <h4>Cabelo e Barba (Combo)</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 85,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 95,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Corte Máquina -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Corte Máquina</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 30,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 35,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Corte Todo na Tesoura -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Corte Todo na Tesoura</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong><small>a Partir</small> R$
+                                    55,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 55,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Acabamento -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Acabamento</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 15,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 15,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Sobrancelha -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Sobrancelha</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 10,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 15,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 8. Luzes -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Luzes</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong><small>a Partir</small> R$
+                                    100,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 100,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 9. Limpeza de Pele -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Limpeza de Pele</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 50,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 50,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 10. Platinado -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Platinado</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong><small>a Partir</small> R$
+                                    150,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 150,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 11. Botox -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Botox</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 70,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 70,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 12. Relaxamento -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Relaxamento</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 30,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 30,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 13. Progressiva -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Progressiva</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong><small>a Partir</small> R$
+                                    100,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 100,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 14. Hidratação -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Hidratação</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 20,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 25,00</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- 15. Depilação Orelha e Nariz -->
+                    <div class="price-item">
+                        <div class="price-info">
+                            <h4>Depilação Orelha e Nariz (Na Cera)</h4>
+                        </div>
+                        <div class="price-values-grid">
+                            <div class="price-day"><span>Seg a Qua</span><strong>R$ 35,00</strong></div>
+                            <div class="price-day"><span>Qui a Sab</span><strong>R$ 35,00</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="gallery section bg-graphite">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">Portfólio & Espaço</span>
+                <h2 class="section-title">Muito além do <span>comum</span></h2>
+                <p class="section-subtitle">Dê uma olhada na nossa casa e também no antes e depois de alguns cortes.</p>
+            </div>
+
+            <!-- Gallery Block 1: Ambiente -->
+            <div class="gallery-category">
+                <h3 class="gallery-cat-title"><span class="line"></span> Nosso Ambiente</h3>
+                <div class="gallery-grid style-masonry">
+                    <div class="gallery-item">
+                        <img src="imagens/salão.png" alt="Salão da RR Barber Shop">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="imagens/salãao imagem .png" alt="Cadeiras e espelhos">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Block 2: Estrutura -->
+            <div class="gallery-category">
+                <h3 class="gallery-cat-title"><span class="line"></span> Fachada</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="imagens/faixada.png" alt="Fachada elegante">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="imagens/salão-de-noite.png" alt="Iluminação noturna e recepção">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Block 3: Resultados -->
+            <div class="gallery-category">
+                <h3 class="gallery-cat-title"><span class="line"></span> Cortes & Resultados</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="fotos-galeria/4.png" alt="Corte premium">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos-galeria/6.png" alt="Detalhe de barbeiro">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos-galeria/7.png" alt="Corte finalizado">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos-galeria/9.png" alt="Barba alinhada">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos-galeria/10.png" alt="Visual renovado">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <!-- Novas Fotos -->
+                    <div class="gallery-item">
+                        <img src="fotos/1.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/2.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/3.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/4.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/5.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/6.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/7.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/8.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/9.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/10.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/11.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/12.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/13.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/14.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/15.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/16.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/17.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/18.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/19.PNG" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/20.PNG" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/21.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="fotos/antes-depois.png" alt="Trabalho Barbeiro RR">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                </div>
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <button id="load-more-btn" class="btn btn-outline">Ver Mais Fotos <i
+                            class="fas fa-chevron-down"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="testimonials section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">Aprovação</span>
+                <h2 class="section-title">A voz dos <span>clientes</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimo-icon"><i class="fas fa-quote-left"></i></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Atendimento nota 10 e profissionais excelentes!!!"</p>
+                    <div class="author">
+                        <h4>Rodrigo Agiani</h4>
+                        <span>Google Review</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimo-icon"><i class="fas fa-quote-left"></i></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Excelente atendimento, o barbeiro Nicolas é um ótimo profissional, o
+                        corte de cabelo e barba ficaram muito bons, no final teve até um cafézinho, super recomendo!!!"
+                    </p>
+                    <div class="author">
+                        <h4>Bruno Barbosa</h4>
+                        <span>Google Review</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimo-icon"><i class="fas fa-quote-left"></i></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Excelente barbearia, sempre corto lá, geralmente não precisa esperar
+                        muito. Os barbeiros são muito bons, mandam bem nos cortes."</p>
+                    <div class="author">
+                        <h4>Jorge Alem</h4>
+                        <span>Google Review</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="cta-section" style="background-image: url('imagens/corte.png');">
+        <div class="cta-overlay"></div>
+        <div class="container cta-content text-center">
+            <h2 class="cta-title">Agende seu horário e viva a experiência <span>RR Barber Shop</span>.</h2>
+            <a href="https://wa.me/5511993615023" target="_blank"
+                class="btn btn-primary btn-lg mt-row booksy-btn">Agendar Agora</a>
+        </div>
+    </section>
+
+    <!-- FOOTER & CONTACT -->
+    <footer id="contact" class="footer">
+        <div class="container footer-container">
+            <div class="footer-col brand-col">
+                <img src="imagens/logo.jpeg" alt="RR Barber Shop" class="footer-logo">
+                <p class="footer-desc">A barbearia que eleva sua autoestima, valoriza a presença e o rigor aos detalhes.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Contatos</h3>
+                <ul class="contact-list">
+                    <li><i class="fas fa-map-marker-alt"></i> Av. Júlio Buono, 1900 A - Vila Gustavo<br>São Paulo - SP,
+                        02201-001</li>
+                    <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/5511993615023" target="_blank">(11)
+                            99361-5023</a></li>
+                    <li><i class="fas fa-phone-alt"></i> (11) 99361-5023</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Funcionamento</h3>
+                <ul class="hours-list">
+                    <li><span>Segunda a Quinta:</span> 10:00h - 20:00h</li>
+                    <li><span>Sexta e Sábado:</span> 09:00h - 20:00h</li>
+                    <li><span class="closed">Domingo:</span> Fechado</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; <span id="current-year"></span> RR Barber Shop. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FAB WHATSAPP -->
+    <a href="https://wa.me/5511993615023" class="fab-whatsapp" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- GALERIA MODAL (Para zoom em imagens) -->
+    <div id="image-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
