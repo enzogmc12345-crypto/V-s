@@ -1,5 +1,27 @@
 # Remoção de fundo
 
+## Antes de tudo: nada aqui roda na nuvem
+
+Vale separar duas coisas que costumam ser confundidas, porque a diferença é o
+que decide custo e privacidade do projeto:
+
+| | Onde processa | Precisa de internet | Custo por imagem | A imagem sai da máquina |
+|---|---|---|---|---|
+| **O que este projeto usa** | CPU do próprio computador | não | zero | não |
+| Serviço de nuvem (Firefly, remove.bg…) | servidor da empresa | sim | sim | sim |
+
+Os dois caminhos deste projeto — o motor nativo do Photoshop e o serviço local
+do Illustrator — estão na primeira linha. Rodam no processamento do PC, offline,
+sem conta, sem crédito e sem custo por imagem.
+
+Um detalhe técnico que não muda nada disso, mas evita mal-entendido: o
+"Remover fundo" do Photoshop é reconhecimento de imagem treinado (Adobe Sensei),
+e o serviço local também usa modelo treinado. **Modelo treinado rodando na sua
+máquina não é serviço de nuvem** — é o que permite recortar cabelo bem sem pagar
+por imagem. Recorte de qualidade sem nenhum modelo treinado só funciona com fundo
+liso e contrastante (intervalo de cores, chroma key, canais); para foto real,
+com cabelo e fundo bagunçado, o resultado não se sustenta.
+
 ## Photoshop: nativo
 
 O plugin chama o motor do próprio Photoshop, na ordem:

@@ -16,7 +16,7 @@ Illustrator, mas por um caminho diferente — e é isso que muda o orçamento do
 | Exportar PDF de várias páginas (LinkedIn) | não direto | sim |
 | Conferir o que está em cima da emenda | sim | sim |
 
-Nada aqui depende de nuvem, de conta Adobe paga ou de crédito de IA. É tudo
+Nada aqui depende de nuvem, de conta Adobe paga ou de crédito. É tudo
 conta de chegada em cima do documento aberto, e é o que já está implementado
 em `packages/core` — com 29 testes automatizados cobrindo o corte, o respiro,
 a sangria, a área segura e a numeração.
@@ -67,8 +67,8 @@ Aqui os dois programas são mundos diferentes.
 O Photoshop já tem o motor de recorte embutido (Remover fundo / Selecionar
 objeto), e ele é chamável por plugin. É o que o plugin faz. Isso significa:
 
-- roda na máquina, offline;
-- não gasta crédito de IA generativa;
+- roda no processamento do próprio computador, offline;
+- não gasta crédito nem tem custo por imagem;
 - a imagem do cliente não sai do computador;
 - a qualidade é a mesma do botão nativo — que é boa, e ainda dá pra abrir o
   "Selecionar e aplicar máscara" pelo próprio plugin quando o cabelo pedir
