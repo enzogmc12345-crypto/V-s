@@ -1,0 +1,11 @@
+{
+  "name": "@carrossel/core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Calculo de pranchetas, fatiamento e nomes do carrossel. Sem dependencia de host.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "license": "UNLICENSED"
+}

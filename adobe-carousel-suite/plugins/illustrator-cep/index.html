@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Carrossel Suite</title>
+    <link rel="stylesheet" href="css/painel.css" />
+  </head>
+  <body>
+    <div class="painel">
+      <h1>Carrossel Suite</h1>
+
+      <section>
+        <h2>1. Layout</h2>
+        <label>Projeto <input id="nome" type="text" value="carrossel" /></label>
+        <label>Formato <select id="formato"></select></label>
+        <div class="linha">
+          <label>Páginas <input id="paginas" type="number" min="1" max="60" value="5" /></label>
+          <label>Escala <select id="escala">
+            <option value="1">1x</option>
+            <option value="2">2x</option>
+            <option value="3">3x</option>
+          </select></label>
+        </div>
+        <label>Modo <select id="modo">
+          <option value="continuous">Prancheta contínua (arte atravessa as páginas)</option>
+          <option value="pages">Uma prancheta por página</option>
+        </select></label>
+        <div class="linha">
+          <label>Respiro <input id="respiro" type="number" min="0" value="0" /></label>
+          <label>Sangria <input id="sangria" type="number" min="0" value="0" /></label>
+        </div>
+        <label>Nome do arquivo <input id="padrao" type="text" value="{projeto}_{nn}" /></label>
+        <p id="resumo" class="resumo"></p>
+        <button id="criar" class="primario">Criar documento do carrossel</button>
+      </section>
+
+      <section>
+        <h2>2. Fatiar prancheta existente</h2>
+        <p class="ajuda">
+          Desenhe a arte inteira numa prancheta larga. O plugin cria uma prancheta por página
+          em cima dela — é assim que uma foto começa na página 1 e termina na 2.
+        </p>
+        <label class="check"><input id="removerOriginal" type="checkbox" checked /> Remover a prancheta larga depois</label>
+        <button id="fatiar">Fatiar prancheta atual</button>
+        <button id="emendas">Conferir emendas</button>
+      </section>
+
+      <section>
+        <h2>3. Exportar</h2>
+        <div class="linha">
+          <label>Formato <select id="saida">
+            <option value="png">PNG</option>
+            <option value="jpg">JPG</option>
+            <option value="pdf">PDF (LinkedIn)</option>
+          </select></label>
+          <label>Qualidade <input id="qualidade" type="number" min="1" max="100" value="90" /></label>
+        </div>
+        <button id="exportar" class="primario">Exportar páginas…</button>
+      </section>
+
+      <section>
+        <h2>4. Remover fundo</h2>
+        <p class="ajuda">
+          O Illustrator não expõe remoção de fundo para plugin. Este botão usa o serviço local
+          que roda na sua máquina — sem internet e sem crédito de IA.
+        </p>
+        <p id="servico" class="ajuda">Serviço local: verificando…</p>
+        <label>Modelo <select id="modelo">
+          <option value="birefnet-general">BiRefNet — melhor borda e cabelo (mais lento)</option>
+          <option value="isnet-general-use">ISNet — equilibrado</option>
+          <option value="u2net_human_seg">U²-Net pessoas — foto de pessoa</option>
+        </select></label>
+        <label class="check"><input id="alfaMatting" type="checkbox" /> Refino de borda (alpha matting)</label>
+        <button id="fundo" class="primario">Remover fundo da imagem selecionada</button>
+        <button id="fundoArquivo">Remover fundo de um arquivo e colocar…</button>
+      </section>
+
+      <div id="status" class="status"></div>
+    </div>
+
+    <script src="lib/core.bundle.js"></script>
+    <script src="js/cep.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

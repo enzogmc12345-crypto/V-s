@@ -1,0 +1,29 @@
+{
+  "manifestVersion": 5,
+  "id": "com.vos.carrossel.photoshop",
+  "name": "Carrossel Suite",
+  "version": "0.1.0",
+  "main": "index.html",
+  "host": [
+    {
+      "app": "PS",
+      "minVersion": "24.0.0"
+    }
+  ],
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "carrossel.panel",
+      "label": { "default": "Carrossel Suite" },
+      "minimumSize": { "width": 300, "height": 360 },
+      "maximumSize": { "width": 1200, "height": 2400 },
+      "preferredDockedSize": { "width": 340, "height": 700 },
+      "preferredFloatingSize": { "width": 380, "height": 760 }
+    }
+  ],
+  "requiredPermissions": {
+    "localFileSystem": "fullAccess",
+    "clipboard": "read"
+  },
+  "icons": []
+}

@@ -1,0 +1,1 @@
+// GERADO POR scripts/build.mjs - NAO EDITE. Fonte: packages/core/

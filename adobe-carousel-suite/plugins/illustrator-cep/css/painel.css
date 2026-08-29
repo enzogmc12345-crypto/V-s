@@ -1,0 +1,32 @@
+:root { color-scheme: dark light; }
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 12px;
+  background: #323232;
+  color: #e8e8e8;
+}
+@media (prefers-color-scheme: light) { body { background: #f0f0f0; color: #1d1d1d; } }
+.painel { padding: 10px 12px 24px; display: flex; flex-direction: column; gap: 14px; }
+h1 { font-size: 14px; margin: 4px 0 0; }
+h2 { font-size: 11px; margin: 0 0 6px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.5px; }
+section { display: flex; flex-direction: column; gap: 6px; border-top: 1px solid rgba(128,128,128,0.35); padding-top: 10px; }
+label { display: flex; flex-direction: column; gap: 2px; font-size: 11px; }
+label.check { flex-direction: row; align-items: center; gap: 6px; }
+.linha { display: flex; gap: 8px; }
+.linha label { flex: 1; }
+input, select { width: 100%; box-sizing: border-box; padding: 3px 4px; font: inherit;
+  background: rgba(255,255,255,0.08); color: inherit; border: 1px solid rgba(128,128,128,0.5); border-radius: 3px; }
+input[type="checkbox"] { width: auto; }
+button { padding: 5px 8px; font: inherit; border-radius: 3px; cursor: pointer;
+  background: rgba(255,255,255,0.1); color: inherit; border: 1px solid rgba(128,128,128,0.5); }
+button:hover { background: rgba(255,255,255,0.18); }
+button.primario { background: #2680eb; border-color: #2680eb; color: #fff; font-weight: 600; }
+button.primario:hover { background: #1473e6; }
+button:disabled { opacity: 0.5; cursor: default; }
+.ajuda, .resumo { font-size: 11px; opacity: 0.7; margin: 2px 0; line-height: 1.45; }
+.resumo { opacity: 0.95; }
+.status { font-size: 11px; line-height: 1.5; white-space: pre-wrap; min-height: 16px; }
+.status.erro { color: #ec5b62; }
+.status.aviso { color: #f29423; }
+.status.ok { color: #33ab84; }

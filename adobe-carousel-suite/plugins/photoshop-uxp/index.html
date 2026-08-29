@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="painel">
+      <h1>Carrossel Suite</h1>
+
+      <section>
+        <h2>1. Layout</h2>
+        <label>Projeto <input id="nome" type="text" value="carrossel" /></label>
+        <label>Formato <select id="formato"></select></label>
+        <div class="linha">
+          <label>Páginas <input id="paginas" type="number" min="1" max="60" value="5" /></label>
+          <label>Escala <select id="escala">
+            <option value="1">1x</option>
+            <option value="2">2x</option>
+            <option value="3">3x</option>
+          </select></label>
+        </div>
+        <label>Modo <select id="modo">
+          <option value="continuous">Tela contínua (arte atravessa as páginas)</option>
+          <option value="pages">Uma prancheta por página</option>
+        </select></label>
+        <div class="linha">
+          <label>Respiro <input id="respiro" type="number" min="0" value="0" /></label>
+          <label>Sangria <input id="sangria" type="number" min="0" value="0" /></label>
+        </div>
+        <label>Nome do arquivo <input id="padrao" type="text" value="{projeto}_{nn}" /></label>
+        <p id="resumo" class="resumo"></p>
+        <button id="criar" class="primario">Criar documento do carrossel</button>
+        <button id="guias">Aplicar guias no documento atual</button>
+      </section>
+
+      <section>
+        <h2>2. Fatiar e conferir</h2>
+        <p class="ajuda">Já tem a arte numa prancheta larga? O plugin descobre as páginas pela largura.</p>
+        <button id="fatiar">Ler prancheta atual e planejar fatias</button>
+        <button id="emendas">Conferir emendas</button>
+      </section>
+
+      <section>
+        <h2>3. Exportar</h2>
+        <div class="linha">
+          <label>Formato <select id="saida">
+            <option value="png">PNG</option>
+            <option value="jpg">JPG</option>
+          </select></label>
+          <label>Qualidade <input id="qualidade" type="number" min="1" max="100" value="90" /></label>
+        </div>
+        <button id="exportar" class="primario">Exportar fatias…</button>
+      </section>
+
+      <section>
+        <h2>4. Remover fundo</h2>
+        <p class="ajuda">Usa o motor do próprio Photoshop, na sua máquina. Nada é enviado para fora.</p>
+        <div class="linha">
+          <label>Encolher <input id="contract" type="number" min="0" max="10" value="0" /></label>
+          <label>Suavizar <input id="feather" type="number" min="0" max="10" value="0" /></label>
+        </div>
+        <label class="check"><input id="aparar" type="checkbox" /> Aparar transparência</label>
+        <button id="fundo" class="primario">Remover fundo da camada</button>
+        <button id="fundoTodas">Remover fundo de todas as camadas</button>
+        <button id="refinar">Abrir Selecionar e aplicar máscara</button>
+      </section>
+
+      <div id="status" class="status"></div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

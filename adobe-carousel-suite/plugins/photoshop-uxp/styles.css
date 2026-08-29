@@ -1,0 +1,18 @@
+body { margin: 0; font-size: 12px; }
+.painel { padding: 10px 12px 24px; display: flex; flex-direction: column; gap: 14px; }
+h1 { font-size: 14px; margin: 4px 0 0; }
+h2 { font-size: 12px; margin: 0 0 6px; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.4px; }
+section { display: flex; flex-direction: column; gap: 6px; border-top: 1px solid rgba(128,128,128,0.3); padding-top: 10px; }
+label { display: flex; flex-direction: column; gap: 2px; font-size: 11px; }
+label.check { flex-direction: row; align-items: center; gap: 6px; }
+.linha { display: flex; gap: 8px; }
+.linha label { flex: 1; }
+input, select { width: 100%; }
+button { margin-top: 2px; }
+button.primario { font-weight: bold; }
+.ajuda, .resumo { font-size: 11px; opacity: 0.7; margin: 2px 0; line-height: 1.4; }
+.resumo { opacity: 0.9; }
+.status { font-size: 11px; line-height: 1.45; white-space: pre-wrap; min-height: 16px; }
+.status .erro { color: #e34850; }
+.status .aviso { color: #e68619; }
+.status .ok { color: #2d9d78; }

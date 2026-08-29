@@ -1,0 +1,13 @@
+{
+  "name": "adobe-carousel-suite",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plugins de carrossel para Adobe Photoshop (UXP) e Adobe Illustrator (CEP).",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "test": "node --test packages/core/test/*.test.js",
+    "build": "node scripts/build.mjs",
+    "prepare-plugins": "npm run build"
+  },
+  "license": "UNLICENSED"
+}
