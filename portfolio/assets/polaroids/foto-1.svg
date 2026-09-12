@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" width="700" height="700">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(115 22% 16%)"/>
+      <stop offset="1" stop-color="hsl(139 28% 9%)"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="700" height="700" fill="url(#bg)"/>
+  <rect width="700" height="700" fill="url(#grid)"/>
+  <g opacity=".85" transform="translate(350.0 324.0)">
+    <rect x="-30" y="-34" width="60" height="48" rx="8" fill="none" stroke="#b8e01f" stroke-opacity=".55" stroke-width="2.5"/>
+    <circle cx="-11" cy="-17" r="6" fill="#b8e01f" fill-opacity=".55"/>
+    <path d="M-30 8 l20 -20 l16 16 l10 -9 l14 14 v5 h-60z" fill="#b8e01f" fill-opacity=".4"/>
+  </g>
+  <text x="350.0" y="384.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="26" font-weight="700" letter-spacing="1" fill="#ffffff" fill-opacity=".82">EU NO STUDIO</text>
+  <text x="350.0" y="419.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="16" letter-spacing="1.5" fill="#ffffff" fill-opacity=".42">SUA FOTO AQUI</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(25 22% 16%)"/>
+      <stop offset="1" stop-color="hsl(49 28% 9%)"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <rect width="900" height="1200" fill="url(#grid)"/>
+  <g opacity=".85" transform="translate(450.0 574.0)">
+    <rect x="-30" y="-34" width="60" height="48" rx="8" fill="none" stroke="#b8e01f" stroke-opacity=".55" stroke-width="2.5"/>
+    <circle cx="-11" cy="-17" r="6" fill="#b8e01f" fill-opacity=".55"/>
+    <path d="M-30 8 l20 -20 l16 16 l10 -9 l14 14 v5 h-60z" fill="#b8e01f" fill-opacity=".4"/>
+  </g>
+  <text x="450.0" y="634.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="34" font-weight="700" letter-spacing="1" fill="#ffffff" fill-opacity=".82">CAMPANHA</text>
+  <text x="450.0" y="679.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="21" letter-spacing="1.5" fill="#ffffff" fill-opacity=".42">TROQUE POR SEU PROJETO</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Pacote Office">
+  <defs>
+    <linearGradient id="g-office" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2B1105"/>
+      <stop offset="1" stop-color="#452b1f"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="92" height="92" rx="22" fill="url(#g-office)"/>
+  <rect x="2.75" y="2.75" width="90.5" height="90.5" rx="21.25" fill="none" stroke="#FF9A6B" stroke-opacity=".28" stroke-width="1.5"/>
+  <text x="48" y="49" text-anchor="middle" dominant-baseline="central"
+        font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="38" font-weight="700"
+        letter-spacing="-1" fill="#FF9A6B">Of</text>
+</svg>

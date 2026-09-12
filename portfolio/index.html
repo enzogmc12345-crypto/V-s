@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio — Designer Gráfico, Produto & Marca</title>
+<meta name="description" content="Portfólio de design gráfico, identidade visual, social media e ilustração 3D.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Caveat:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- textura de grão por cima de tudo -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ===================== NAVEGAÇÃO ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#topo">
+    <span class="nav__dot" aria-hidden="true"></span>
+    <span class="nav__brandName" data-perfil="iniciais">—</span>
+  </a>
+
+  <nav class="nav__links" aria-label="Navegação principal">
+    <a href="#trabalhos">Trabalhos</a>
+    <a href="#arquivos">Arquivos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <a class="nav__cta" href="#contato">
+    <span class="nav__pulse" aria-hidden="true"></span>
+    Bora trabalhar
+  </a>
+
+  <button class="nav__burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile">
+    <span></span><span></span>
+  </button>
+</header>
+
+<div class="navMobile" id="navMobile" hidden>
+  <a href="#trabalhos">Trabalhos</a>
+  <a href="#arquivos">Arquivos</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#contato">Contato</a>
+</div>
+
+<main id="topo">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+
+    <div class="hero__grid">
+      <!-- coluna esquerda -->
+      <div class="hero__col hero__col--left" data-reveal>
+        <span class="rule" aria-hidden="true"></span>
+        <h1 class="hero__role" data-perfil="cargo">Graphic / Product<br>&amp; Brand Designer</h1>
+        <p class="hero__status">
+          <span class="hero__statusDot" aria-hidden="true"></span>
+          <span data-perfil="localizacao">Disponível para freelas</span>
+        </p>
+      </div>
+
+      <!-- avatar 3D (olha para o mouse) -->
+      <div class="hero__stage">
+        <div class="avatar" id="avatar" data-avatar>
+          <div class="avatar__ring" aria-hidden="true"></div>
+
+          <!-- Fallback / estado atual: imagem -->
+          <img class="avatar__img" id="avatarImg" src="assets/hero/avatar.png"
+               alt="Ilustração 3D do designer" draggable="false">
+
+          <!-- Quando o vídeo existir (assets/hero/avatar-look.mp4) ele assume
+               automaticamente e a cabeça acompanha o mouse. -->
+          <video class="avatar__video" id="avatarVideo" muted playsinline
+                 preload="auto" disablepictureinpicture></video>
+
+          <span class="avatar__badge" id="avatarBadge">espaço reservado pro seu vídeo 3D</span>
+        </div>
+
+        <h2 class="hero__name" aria-label="Nome">
+          <span class="hero__nameTop" data-perfil="sobrenome">—</span>
+          <span class="hero__nameMain" data-perfil="nome">—</span>
+        </h2>
+      </div>
+
+      <!-- coluna direita -->
+      <div class="hero__col hero__col--right" data-reveal>
+        <p class="hero__bio" data-perfil="bio">—</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#trabalhos">Ver meus trabalhos</a>
+          <a class="btn btn--ghost" href="#contato">Me chamar</a>
+        </div>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#trabalhos" aria-label="Rolar para os trabalhos">
+      <span class="hero__scrollLine" aria-hidden="true"></span>
+      role pra baixo
+    </a>
+  </section>
+
+  <!-- ============ CARROSSEL DE FERRAMENTAS (abaixo do hero) ============ -->
+  <section class="tools" aria-label="Ferramentas que eu domino">
+    <p class="tools__label">ferramentas do dia a dia</p>
+    <div class="tools__viewport">
+      <div class="tools__track" id="toolsTrack"><!-- via JS --></div>
+    </div>
+  </section>
+
+  <!-- ===================== MANIFESTO + SERVIÇOS ===================== -->
+  <section class="manifesto" id="servicos">
+    <div class="wrap">
+      <span class="rule" aria-hidden="true"></span>
+      <h2 class="manifesto__title" data-reveal>
+        Design que resolve, ilustração que conta história
+        <em>e editorial que se lê bem…</em>
+      </h2>
+      <p class="manifesto__text" data-reveal>
+        Design não é só imagem, cor e tipografia — é um jeito de comunicar ideia,
+        identificar problema real e entregar solução para quem precisa. Vim do editorial,
+        onde cada página tem que funcionar até para quem não enxerga, e levo esse rigor
+        para tudo: da campanha de rede social ao livro didático que vai parar na mão de
+        milhares de alunos.
+      </p>
+
+      <h3 class="section__kicker" data-reveal>o que eu faço</h3>
+      <div class="servicos" id="servicos-grid" data-reveal><!-- via JS --></div>
+    </div>
+  </section>
+
+  <!-- ===================== CARROSSEL DE PROJETOS ===================== -->
+  <section class="works" id="trabalhos">
+    <div class="works__head wrap">
+      <p class="works__intro" data-reveal>
+        Uma seleção do que eu venho construindo — editorial, campanha e ilustração.
+        Clique em um card para abrir o projeto completo.
+      </p>
+      <h2 class="works__title" data-reveal>MEUS <span>TRABALHOS</span></h2>
+    </div>
+
+    <div class="carousel" id="carousel" role="group" aria-roledescription="carrossel"
+         aria-label="Projetos em destaque" tabindex="0">
+      <div class="carousel__stage" id="carouselStage"><!-- via JS --></div>
+    </div>
+
+    <div class="carousel__ui wrap">
+      <button class="carousel__btn" id="prevBtn" aria-label="Projeto anterior">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="carousel__dots" id="carouselDots" role="tablist" aria-label="Escolher projeto"></div>
+      <button class="carousel__btn carousel__btn--next" id="nextBtn" aria-label="Próximo projeto">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <p class="carousel__hint">roda sozinho · arraste para o lado · clique para abrir</p>
+  </section>
+
+  <!-- ===================== PASTAS (ARQUIVOS) ===================== -->
+  <section class="files" id="arquivos">
+    <div class="wrap">
+      <span class="rule" aria-hidden="true"></span>
+      <h2 class="section__title" data-reveal>Meus arquivos</h2>
+      <p class="section__sub" data-reveal>
+        Tudo organizado por pasta, do jeito que fica no computador.
+        Clique para abrir.
+      </p>
+
+      <div class="folders" id="folders" data-reveal><!-- via JS --></div>
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE + POLAROIDS ===================== -->
+  <section class="about" id="sobre">
+    <div class="wrap">
+      <span class="rule" aria-hidden="true"></span>
+      <h2 class="section__title" data-reveal>Sobre mim</h2>
+
+      <div class="about__grid">
+        <div class="about__text" data-reveal>
+          <p class="about__lead" data-perfil="bio">—</p>
+          <p>
+            Trabalhei quatro anos numa fundação de inclusão de pessoas com deficiência
+            visual, ilustrando e diagramando material didático para o PNLD. Foi lá que
+            aprendi a projetar pensando em quem vai receber a peça, não em quem faz.
+            Depois disso passei por campanha política, educação e freela — e levei esse
+            jeito de trabalhar para todo canto.
+          </p>
+          <p>
+            Gosto de demanda simultânea, cronograma apertado e projeto que precisa de
+            conceito, sistema e acabamento. Também já lidero equipe e uso IA no fluxo
+            quando ela realmente encurta caminho.
+          </p>
+
+          <ul class="chips" id="chips"><!-- via JS --></ul>
+
+          <div class="numbers" id="numbers"><!-- via JS --></div>
+
+          <a class="btn btn--ghost" id="cvBtn" href="#" download>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="btn__icon"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Baixar currículo
+          </a>
+        </div>
+
+        <div class="polaroids" id="polaroids" data-reveal><!-- via JS --></div>
+      </div>
+
+      <h3 class="section__kicker" data-reveal>por onde eu passei</h3>
+      <ol class="timeline" id="timeline" data-reveal><!-- via JS --></ol>
+    </div>
+  </section>
+
+  <!-- ===================== CONTATO (ARCO DE IMAGENS) ===================== -->
+  <section class="contact" id="contato">
+    <div class="contact__arc" id="contactArc" aria-hidden="true"><!-- via JS --></div>
+
+    <div class="contact__inner" data-reveal>
+      <h2 class="contact__title">Vamos criar algo<br>excepcional</h2>
+      <p class="contact__text">
+        Bora construir uma marca forte ou uma experiência digital redonda.
+        Me chama que a gente conversa.
+      </p>
+      <div class="contact__actions" id="contactActions"><!-- via JS --></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__name"><span data-perfil="nomeCompleto">—</span> · <span data-perfil="ano">2026</span></p>
+    <p class="footer__made">Feito à mão, pixel por pixel.</p>
+    <a class="footer__top" href="#topo">voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<!-- ============ POPUP: JANELA DO MAC (projetos e pastas) ============ -->
+<div class="mac" id="mac" hidden>
+  <div class="mac__backdrop" data-mac-close></div>
+
+  <div class="mac__window" role="dialog" aria-modal="true" aria-labelledby="macTitle" tabindex="-1">
+    <!-- barra superior -->
+    <div class="mac__bar">
+      <div class="mac__lights" aria-hidden="true">
+        <button class="mac__light mac__light--red" data-mac-close aria-label="Fechar" tabindex="-1"></button>
+        <span class="mac__light mac__light--yellow"></span>
+        <span class="mac__light mac__light--green"></span>
+      </div>
+
+      <div class="mac__nav" aria-hidden="true">
+        <button class="mac__navBtn" id="macBack" aria-label="Voltar" tabindex="-1">
+          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="mac__navBtn" disabled aria-label="Avançar" tabindex="-1">
+          <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="mac__url">
+        <svg class="mac__lock" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0110 0v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="4.5" y="11" width="15" height="9" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span id="macUrl">portfolio.com</span>
+      </div>
+
+      <button class="mac__close" data-mac-close aria-label="Fechar janela">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <!-- conteúdo -->
+    <div class="mac__body" id="macBody">
+      <h2 id="macTitle" class="sr-only">Detalhe do projeto</h2>
+      <!-- via JS -->
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
