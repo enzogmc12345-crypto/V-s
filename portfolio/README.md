@@ -41,22 +41,70 @@ Textos maiores e fixos (títulos das seções, manifesto, contato) estão no
 
 ---
 
-## O vídeo 3D que olha para o mouse
+## O avatar 3D que olha para o mouse
 
-O hero já está **preparado** para o vídeo. Hoje ele mostra a imagem
-`assets/hero/avatar.png` com uma inclinação 3D que segue o mouse.
+O hero tenta três coisas, **nesta ordem**, e usa a primeira que existir:
 
-Quando o vídeo estiver pronto:
+| | Modo | Arquivo | Quando usar |
+|---|---|---|---|
+| 1º | **Sequência de frames** | `assets/hero/frames/` | ⭐ Melhor opção. Mais leve, funciona no iPhone, não engasga |
+| 2º | Vídeo | `assets/hero/avatar-look.mp4` | Se você só tem o MP4 pronto |
+| 3º | Imagem parada | `assets/hero/avatar.png` | Estado atual. Sempre funciona |
 
-1. Salve o arquivo como **`assets/hero/avatar-look.mp4`**.
-2. Só isso. O site detecta o arquivo sozinho, troca a imagem pelo vídeo,
-   some com o selo "espaço reservado" e passa a controlar o vídeo pela
-   posição do mouse.
+Em qualquer modo a regra é a mesma: **mouse na esquerda = começo da
+animação, centro = meio, direita = fim**. Ou seja, o personagem precisa
+virar a cabeça da esquerda para a direita, num movimento só, sem voltar.
 
-### Como gravar o vídeo para funcionar bem
+O que não existir é simplesmente ignorado. Nada quebra.
 
-O site **rebobina o vídeo** conforme o mouse: mouse na esquerda = começo do
-vídeo, mouse no centro = meio, mouse na direita = fim. Então:
+---
+
+### Opção 1 (recomendada): sequência de frames
+
+Se você exportou o vídeo em frames, **não copie os arquivos originais na
+mão** — são pesados demais para um site. Use o script:
+
+```bash
+bash portfolio/ferramentas/preparar-frames.sh "/caminho/da/pasta/com/os/frames"
+```
+
+> Dica: em vez de digitar o caminho, arraste a pasta do Finder para dentro
+> do Terminal, logo depois do comando — ele preenche sozinho.
+
+O script pega 1 a cada N frames (mira em ~60 no total), redimensiona para
+700 px de largura, comprime, renomeia em ordem (`frame_0001.webp`,
+`frame_0002.webp`, …) e salva tudo em `assets/hero/frames/`. Uma pasta de
+180 MB costuma virar algo em torno de 1–3 MB.
+
+Ele usa `ffmpeg` se você tiver (`brew install ffmpeg`, gera `.webp`) ou o
+`sips`, que já vem no macOS (gera `.jpg`, um pouco maior).
+
+No final ele imprime duas linhas para você conferir no `js/data.js`, dentro
+de `avatarFrames`:
+
+```js
+extensao: 'webp',
+quantidade: 58,
+```
+
+Pode deixar `quantidade: 0` que o site descobre sozinho — preencher só
+deixa o carregamento um pouco mais rápido.
+
+Para mudar a largura ou a quantidade de frames:
+
+```bash
+bash portfolio/ferramentas/preparar-frames.sh "/pasta" 900 80
+#                                              origem  largura  qtd
+```
+
+---
+
+### Opção 2: vídeo MP4
+
+Salve o arquivo como **`assets/hero/avatar-look.mp4`**. Só isso — o site
+detecta sozinho e passa a rebobinar o vídeo pela posição do mouse.
+
+Para funcionar bem:
 
 - Grave o personagem começando **olhando totalmente para a esquerda**,
   passando pelo **centro** e terminando **olhando totalmente para a direita**.
@@ -150,10 +198,13 @@ portfolio/
 ├── js/
 │   ├── data.js             ← ⭐ SEU CONTEÚDO (edite aqui)
 │   └── main.js             ← comportamento (carrossel, popup, avatar)
+├── ferramentas/
+│   └── preparar-frames.sh  ← prepara os frames do avatar (roda no seu Mac)
 ├── assets/
 │   ├── hero/
 │   │   ├── avatar.png      ← imagem 3D atual
-│   │   └── avatar-look.mp4 ← ⬅ coloque o vídeo aqui quando gravar
+│   │   ├── frames/         ← ⬅ os frames otimizados entram aqui
+│   │   └── avatar-look.mp4 ← ⬅ ou o vídeo, se preferir
 │   ├── tools/              ← ícones das ferramentas
 │   ├── projetos/           ← capas e imagens dos projetos
 │   ├── polaroids/          ← suas fotos
@@ -180,7 +231,8 @@ Para trocar o verde da marca inteira, mude só esta linha:
 
 ## O que já está funcionando
 
-- Hero com avatar 3D que acompanha o mouse (e aceita o vídeo depois)
+- Hero com avatar 3D que acompanha o mouse, em três modos automáticos
+  (sequência de frames, vídeo ou imagem parada)
 - Carrossel de ferramentas em loop infinito
 - Carrossel de projetos em leque, girando sozinho, com arraste, setas,
   bolinhas e teclado (← →)

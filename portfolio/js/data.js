@@ -29,13 +29,34 @@ const PERFIL = {
   curriculoPDF: 'CURRICULO/enzo-giuseppe-curriculo.pdf',
 
   /* AVATAR 3D DO HERO ------------------------------------------------------
-     - imagem: usada agora (e como fallback se o vídeo não carregar)
-     - video : quando você gravar o vídeo com a IA (cabeça virando da esquerda
-               para a direita), salve como portfolio/assets/hero/avatar-look.mp4
-               e o site passa a "olhar" para o mouse sozinho.
-               Veja portfolio/README.md para as dicas de gravação.        */
+     O site tenta, nesta ordem:
+       1º) a sequência de frames  (avatarFrames)  ← melhor opção
+       2º) o vídeo                (avatarVideo)
+       3º) a imagem parada        (avatarImagem)  ← funciona sempre
+     O que não existir é simplesmente ignorado, nada quebra.              */
   avatarImagem: 'assets/hero/avatar.png',
   avatarVideo: 'assets/hero/avatar-look.mp4',
+
+  /* SEQUÊNCIA DE FRAMES — recomendado -------------------------------------
+     Se você já tem os frames do vídeo (a cabeça virando da esquerda para a
+     direita), use eles: fica mais leve que vídeo, funciona no iPhone e
+     acompanha o mouse sem engasgar.
+
+     Como preparar: rode o script abaixo no terminal do seu Mac, apontando
+     para a pasta com os frames originais. Ele redimensiona, comprime,
+     renomeia tudo em ordem e joga direto no lugar certo:
+
+        bash portfolio/ferramentas/preparar-frames.sh "/caminho/da/pasta"
+
+     Depois é só conferir a "extensao" e a "quantidade" aqui embaixo — o
+     script imprime os valores certos no final.                           */
+  avatarFrames: {
+    pasta: 'assets/hero/frames/',
+    prefixo: 'frame_',
+    digitos: 4,            // frame_0001.webp
+    extensao: 'webp',      // o script avisa se gerou 'jpg' em vez de 'webp'
+    quantidade: 0,         // 0 = o site descobre sozinho quantos frames existem
+  },
 };
 
 /* ----------------------------------------------------------------------------

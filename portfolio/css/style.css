@@ -433,7 +433,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .avatar__img,
-.avatar__video {
+.avatar__video,
+.avatar__canvas {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -444,11 +445,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   -webkit-user-drag: none;
 }
 
-.avatar__video { opacity: 0; pointer-events: none; }
+.avatar__video,
+.avatar__canvas { opacity: 0; pointer-events: none; }
 
-/* quando o vídeo carrega, ele assume o lugar da imagem */
-.avatar.has-video .avatar__video { opacity: 1; }
-.avatar.has-video .avatar__img   { opacity: 0; }
+/* o vídeo ou a sequência de frames assumem o lugar da imagem quando existem */
+.avatar.has-video  .avatar__video  { opacity: 1; }
+.avatar.has-frames .avatar__canvas { opacity: 1; }
+.avatar.has-video  .avatar__img,
+.avatar.has-frames .avatar__img    { opacity: 0; }
 
 .avatar__badge {
   position: absolute;
@@ -468,7 +472,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   white-space: nowrap;
   transition: opacity .4s;
 }
-.avatar.has-video .avatar__badge { opacity: 0; pointer-events: none; }
+.avatar.has-video .avatar__badge,
+.avatar.has-frames .avatar__badge { opacity: 0; pointer-events: none; }
 
 /* nome gigante atravessando o avatar */
 .hero__name {

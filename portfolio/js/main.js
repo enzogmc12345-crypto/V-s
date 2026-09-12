@@ -604,33 +604,118 @@
 
   /* ======================================================================
      9. AVATAR QUE OLHA PARA O MOUSE
-     Se existir o vídeo (assets/hero/avatar-look.mp4) ele é "rebobinado"
-     conforme a posição do mouse: mouse à esquerda = começo do vídeo,
-     mouse à direita = fim do vídeo. Sem o vídeo, a imagem faz um
-     movimento 3D suave que dá a mesma sensação.
+
+     O mouse na esquerda mostra o começo da animação, no centro o meio e na
+     direita o fim — então basta que o personagem vire a cabeça da esquerda
+     para a direita, num movimento só.
+
+     Três modos, escolhidos sozinho, nesta ordem:
+       1. sequência de frames em assets/hero/frames/  (o mais suave)
+       2. vídeo em assets/hero/avatar-look.mp4        (rebobinado pelo mouse)
+       3. imagem parada com inclinação 3D             (funciona sempre)
      ==================================================================== */
+
+  function urlDoFrame(cfg, n) {
+    const numero = String(n).padStart(cfg.digitos || 4, '0');
+    return `${cfg.pasta}${cfg.prefixo || ''}${numero}.${cfg.extensao}`;
+  }
+
+  function carregarImagem(src) {
+    return new Promise((ok, falha) => {
+      const img = new Image();
+      img.onload = () => ok(img);
+      img.onerror = falha;
+      img.src = src;
+    });
+  }
+
+  /* Carrega a sequência inteira. Se `quantidade` for 0, descobre sozinho:
+     vai pedindo em lotes e para no primeiro frame que não existir. */
+  async function carregarFrames(cfg) {
+    if (!cfg || !cfg.pasta || !cfg.extensao) return null;
+
+    let primeiro;
+    try { primeiro = await carregarImagem(urlDoFrame(cfg, 1)); }
+    catch (_) { return null; }                       // não há frames, segue o baile
+
+    const frames = [primeiro];
+    const limite = cfg.quantidade > 0 ? cfg.quantidade : 600;
+    const lote = 12;
+
+    for (let n = 2; n <= limite; n += lote) {
+      const pedidos = [];
+      for (let i = n; i < n + lote && i <= limite; i++) {
+        pedidos.push(carregarImagem(urlDoFrame(cfg, i)).catch(() => null));
+      }
+      const carregados = await Promise.all(pedidos);
+      for (const img of carregados) {
+        if (!img) return frames;                     // fim da sequência
+        frames.push(img);
+      }
+    }
+    return frames;
+  }
+
+  /* Desenha um frame no canvas imitando object-fit:cover + object-position */
+  function desenharFrame(canvas, ctx, img, posY) {
+    const r = canvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const larg = Math.round(r.width * dpr);
+    const alt = Math.round(r.height * dpr);
+
+    if (canvas.width !== larg || canvas.height !== alt) {
+      canvas.width = larg;
+      canvas.height = alt;
+    }
+
+    const escala = Math.max(larg / img.naturalWidth, alt / img.naturalHeight);
+    const dw = img.naturalWidth * escala;
+    const dh = img.naturalHeight * escala;
+    ctx.clearRect(0, 0, larg, alt);
+    ctx.drawImage(img, (larg - dw) * 0.5, (alt - dh) * posY, dw, dh);
+  }
+
   function iniciarAvatar() {
     const caixa  = $('#avatar');
     const video  = $('#avatarVideo');
     const imagem = $('#avatarImg');
+    const canvas = $('#avatarCanvas');
     if (!caixa) return;
 
     if (PERFIL.avatarImagem) imagem.src = PERFIL.avatarImagem;
 
-    let alvoX = 0, alvoY = 0;     // -1 .. 1
-    let atualX = 0, atualY = 0;
-    let temVideo = false;
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    const posY = 0.12;             // mesmo enquadramento do object-position do CSS
 
-    // ---- tenta carregar o vídeo; se não existir, segue com a imagem ----
-    if (PERFIL.avatarVideo && !semMovimento) {
+    let alvoX = 0, alvoY = 0;      // -1 .. 1
+    let atualX = 0, atualY = 0;
+    let modo = 'imagem';
+    let frames = null;
+    let frameAtual = -1;
+
+    // ---- 1. sequência de frames ----
+    if (!semMovimento && PERFIL.avatarFrames && ctx) {
+      carregarFrames(PERFIL.avatarFrames).then((lista) => {
+        if (!lista || lista.length < 2) return;
+        frames = lista;
+        modo = 'frames';
+        frameAtual = -1;
+        caixa.classList.add('has-frames');
+        caixa.classList.remove('has-video');
+      }).catch(() => { /* segue com vídeo ou imagem */ });
+    }
+
+    // ---- 2. vídeo ----
+    if (!semMovimento && PERFIL.avatarVideo) {
       video.addEventListener('loadedmetadata', () => {
+        if (modo === 'frames') return;               // frames têm prioridade
         if (!isFinite(video.duration) || video.duration <= 0) return;
-        temVideo = true;
+        modo = 'video';
         video.pause();
         video.currentTime = video.duration / 2;
         caixa.classList.add('has-video');
       });
-      video.addEventListener('error', () => { temVideo = false; });
+      video.addEventListener('error', () => { /* sem vídeo, tudo bem */ });
       video.src = PERFIL.avatarVideo;
       video.load();
     }
@@ -647,13 +732,23 @@
 
     window.addEventListener('pointermove', (e) => aoMover(e.clientX, e.clientY), { passive: true });
     window.addEventListener('pointerleave', () => { alvoX = 0; alvoY = 0; });
+    window.addEventListener('resize', () => { frameAtual = -1; });   // redesenha no novo tamanho
 
     // ---- loop de animação (suaviza o movimento) ----
     function quadro() {
       atualX += (alvoX - atualX) * 0.09;
       atualY += (alvoY - atualY) * 0.09;
 
-      if (temVideo) {
+      if (modo === 'frames') {
+        const i = Math.round(((atualX + 1) / 2) * (frames.length - 1));
+        if (i !== frameAtual) {
+          frameAtual = i;
+          desenharFrame(canvas, ctx, frames[i], posY);
+        }
+        caixa.style.transform =
+          `perspective(900px) rotateY(${atualX * 3}deg) rotateX(${-atualY * 2}deg)`;
+
+      } else if (modo === 'video') {
         // mapeia a posição horizontal para o tempo do vídeo
         const destino = ((atualX + 1) / 2) * video.duration;
         if (Math.abs(video.currentTime - destino) > 0.012 && video.readyState >= 2) {
@@ -661,6 +756,7 @@
         }
         caixa.style.transform =
           `perspective(900px) rotateY(${atualX * 3}deg) rotateX(${-atualY * 2}deg)`;
+
       } else {
         // fallback: a própria imagem inclina em 3D na direção do mouse
         caixa.style.transform =
